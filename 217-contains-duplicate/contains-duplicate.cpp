@@ -2,16 +2,13 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
         bool dup=false;
-        int left=0;
-        int right=left+1;
-        sort(nums.begin(),nums.end());
-        while(left<nums.size() and right<nums.size()){
-            if(nums[left]==nums[right]){
+        unordered_set<int> ans;
+        for(int i=0;i<nums.size();i++){
+            if(ans.find(nums[i])!=ans.end()){
                 return true;
             }
             else{
-                left++;
-                right++;
+                ans.insert(nums[i]);
             }
         }
         return dup;
